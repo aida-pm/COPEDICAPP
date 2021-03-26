@@ -22,19 +22,6 @@ st.set_page_config('COPEDICAPP','https://pbs.twimg.com/profile_images/1309527192
 st.title('Projecte La Marató - COPEDICAT') # TITOL API
 
 
-# In[99]:
-
-
-#dades = pd.read_csv('COPEDICATClinicSympt_DATA_2021-03-15_1112.csv') # LLEGIM LES DADES DE L'EXCEL
-#vec_part = dades.participant_id # ID PARTICIPANT
-
-
-# In[100]:
-
-
-# st.write("Pacient:"+str(vec_part[0])) # ESCRIC ID PARTICIPANT 1 - AIXÒ ÉS USELESS PERÒ EM FEIA ILU
-
-
 # In[101]:
 
 
@@ -183,7 +170,7 @@ if st.checkbox('Presenta comorbiditat'):
 
 
 
-dades_pacient = [data,born,sport,sympt_epi,housemembers_symp,home_confirmed,school_sympt,school_confirmed,fever,highest_fever,ini_fever,end_fever,tos,cough_first,disfonia,disfonia_first,resp,resp_first,tachypnea,tachypnea_first,ausc,ausc_first,wheezing,crackles,odyno,odyno_first,nasal,nasal_first,fatiga,fatiga_first,headache,headache_first,conj,conj_first,ocular,ocular_first,gi_symp,gi_first,abd,vomit,diarrea,skin,skin_first,rash,infla_peri,infla_oral,adeno,adeno_first,hepato,hepato_first,spleno,spleno_first,hemo,hemo_first,irriti,irriti_first,neuro,neuro_first,confu,seizures,nuch,hypotonia,paral,shock,shock_first,taste,taste_first,smell,smell_first,comorb,cardio,hipert,com_resp,asma]
+dades_pacient = [data,born,sport,sympt_epi,housemembers_symp,home_confirmed,school_sympt,school_confirmed,fever,highest_fever,ini_fever,end_fever,tos,cough_first,crup,crup_first,disfonia,disfonia_first,resp,resp_first,tachypnea,tachypnea_first,ausc,ausc_first,wheezing,crackles,odyno,odyno_first,nasal,nasal_first,fatiga,fatiga_first,headache,headache_first,conj,conj_first,ocular,ocular_first,gi_symp,gi_first,abd,vomit,diarrea,skin,skin_first,rash,infla_peri,infla_oral,adeno,adeno_first,hepato,hepato_first,spleno,spleno_first,hemo,hemo_first,irriti,irriti_first,neuro,neuro_first,confu,seizures,nuch,hypotonia,paral,shock,shock_first,taste,taste_first,smell,smell_first,comorb,cardio,hipert,com_resp,asma]
 
 
 # In[107]:
@@ -236,7 +223,13 @@ st.write("Aquí va la gràfica maca dels bitsbitsbits!")
 # In[ ]:
 
 
-
+# dictionary of lists 
+dict = {'id': id_pacient,'recruit_date':data,'date_of_birth':born,'sports':sport,'sympt_epi':sympt_epi,'housemember_symptoms':housemembers_symp,'home_confirmed':home_confirmed,'school_symptoms':school_sympt,'school_confirmed':school_confirmed,'fever':fever,'highest_fever':highest_fever,'date_fever':ini_fever,'end_fever':end_fever,'tos':tos,'cough_first':cough_first,'crup':crup,'crup_first':crup_first,'dysphonia':disfonia,'disfonia_first':disfonia_first,'resp':resp,'dyspnea_first':resp_first,'tachypnea':tachypnea,'tachypnea_first':tachypnea_first,'ausc_resp':ausc,'auscult_first':ausc_first,'wheezing':wheezing,'crackles':crackles,'odynophagia':odyno,'odynophagia_first':odyno_first,'nasal_congestion':nasal,'nasal_first':nasal_first,'fatiga':fatiga,'fatigue_first':fatiga_first,'headache':headache,'headache_first':headache_first,'conjuntivitis':conj,'conj_first':conj_first,'ocular_pain':ocular,'ocular_first':ocular_first,'gi_symptoms':gi_symp,'gi_first':gi_first,'abdominal_pain':abd,'vomiting':vomit,'dyarrea':diarrea,'dermatologic':skin,'skin_first':skin_first,'rash':rash,'inflam_periferic':infla_peri,'inflam_oral':infla_oral,'adenopathies':adeno,'lymph_first':adeno_first,'hepato':hepato,'hepato_first':hepato_first,'splenomegaly':spleno,'spleno_first':spleno_first,'hemorrhagies':hemo,'hemorr_first':hemo_first,'irritability':irriti,'irritability_first':irriti_first,'neuro':neuro,'neuro_first':neuro_first,'confusion':confu,'seizures':seizures,'nuchal_stiffness':nuch,'hypotonia':hypotonia,'peripheral_paralysis':paral,'shock':shock,'shock_first':shock_first,'taste_smell':taste,'taste_first':taste_first,'smell':smell,'smell_first':smell_first,'comorbi_binary':comorb,'cardiopathy':cardio,'hypertension':hipert,'pulmonar_disease':com_resp,'asma':asma} 
+     
+df = pd.DataFrame(dict)
+  
+# saving the dataframe
+df.to_csv('new_data.csv')
 
 
 # In[ ]:
