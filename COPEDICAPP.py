@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[21]:
+# In[1]:
 
 
 import streamlit as st
@@ -10,19 +10,19 @@ import pandas as pd
 import datetime
 
 
-# In[22]:
+# In[2]:
 
 
 st.set_page_config('COPEDICAPP','https://pbs.twimg.com/profile_images/1309527192381067270/6zbTWN-M.jpg','wide')
 
 
-# In[23]:
+# In[3]:
 
 
 st.title('Projecte La Marató - COPEDICAT') # TITOL API
 
 
-# In[24]:
+# In[4]:
 
 
 # CALENDARIS DATES
@@ -30,124 +30,124 @@ data = st.sidebar.date_input("Data d'avui")
 born = st.sidebar.date_input("Data naixement pacient")
 
 
-# In[25]:
+# In[5]:
 
 
 id_pacient = st.text_input('ID del/la pacient', 'ID XXXXXX')
 
 
-# In[26]:
+# In[6]:
 
 
 # SOCIAL
 st.header("Paràmetres socials")
 left_column, right_column = st.beta_columns(2)
-sport = left_column.radio("Practica esport?",['Si','No'])
-sympt_epi = left_column.radio("A casa hi ha algú amb símptomes?",['Si','No'])
-housemembers_symp = left_column.radio("Qui té símptomes a casa?",['Pare','Mare','Germà/na','Avi/a','Altres'])
-home_confirmed = right_column.radio("COVID confimat a casa?",['Si','No'])
-school_sympt = right_column.radio("A l'escola hi ha algú amb símptomes?",['Si','No'])
-school_confirmed = right_column.radio("COVID confirmat a l'escola?",['Si','No'])
+sport = left_column.radio("Practica esport?",['No Consta','Si','No'])
+sympt_epi = left_column.radio("A casa hi ha algú amb símptomes?",['No Consta','Si','No'])
+housemembers_symp = left_column.radio("Qui té símptomes a casa?",['No Consta','Pare','Mare','Germà/na','Avi/a','Altres'])
+home_confirmed = right_column.radio("COVID confimat a casa?",['No Consta','Si','No'])
+school_sympt = right_column.radio("A l'escola hi ha algú amb símptomes?",['No Consta','Si','No'])
+school_confirmed = right_column.radio("COVID confirmat a l'escola?",['No Consta','Si','No'])
 
 
-# In[27]:
+# In[7]:
 
 
 # SIMPTOMES
 st.header("Símptomes")
 left_column, right_column = st.beta_columns(2)
-fever = left_column.radio("Té febre?",['Si','No'])
-highest_fever = left_column.radio("Valor màxim de febre",['37ºC a < 38ºC','Entre 38ºC i 39ºC','> 39ºC'])
+fever = left_column.radio("Té febre?",['No Consta','Si','No'])
+highest_fever = left_column.radio("Valor màxim de febre",['No Consta','37ºC a < 38ºC','Entre 38ºC i 39ºC','> 39ºC'])
 ini_fever = right_column.date_input("Data inici febre")
 end_fever = right_column.date_input("Data final febre")
 
-tos = left_column.radio("Té tos?",['Si','No'])
-cough_first = left_column.radio("Va presentar tos durant les primeres 24h?",['Si','No'])
+tos = left_column.radio("Té tos?",['No Consta','Si','No'])
+cough_first = left_column.radio("Va presentar tos durant les primeres 24h?",['No Consta','Si','No'])
 
-crup = right_column.radio("Té diftèria?",['Si','No','No Consta'])
-crup_first = right_column.radio("Va presentar diftèria durant les primeres 24h?",['Si','No'])
+crup = right_column.radio("Té diftèria?",['No Consta','Si','No'])
+crup_first = right_column.radio("Va presentar diftèria durant les primeres 24h?",['No Consta','Si','No'])
 
-disfonia = left_column.radio("Té disfonia?",['Si','No','No Consta'])
-disfonia_first = left_column.radio("Va presentar disfonia durant les primeres 24h?",['Si','No'])
+disfonia = left_column.radio("Té disfonia?",['No Consta','Si','No'])
+disfonia_first = left_column.radio("Va presentar disfonia durant les primeres 24h?",['No Consta','Si','No'])
 
-resp = right_column.radio("Té dispnea?",['Si','No','No Consta'])
-resp_first = right_column.radio("Va presentar dispnea durant les primeres 24h?",['Si','No'])
+resp = right_column.radio("Té dispnea?",['No Consta','Si','No'])
+resp_first = right_column.radio("Va presentar dispnea durant les primeres 24h?",['No Consta','Si','No'])
 
-tachypnea = left_column.radio("Té taquipnea?",['Si','No','No Consta'])
-tachypnea_first = left_column.radio("Va presentar taquipnea durant les primeres 24h?",['Si','No'])
+tachypnea = left_column.radio("Té taquipnea?",['No Consta','Si','No'])
+tachypnea_first = left_column.radio("Va presentar taquipnea durant les primeres 24h?",['No Consta','Si','No'])
 
-ausc = right_column.radio("És l'auscultació patològica?",['Si','No'])
-ausc_first = right_column.radio("Va presentar auscultació patològica durant les primeres 24h?",['Si','No'])
+ausc = right_column.radio("És l'auscultació patològica?",['No Consta','Si','No'])
+ausc_first = right_column.radio("Va presentar auscultació patològica durant les primeres 24h?",['No Consta','Si','No'])
 
-wheezing = left_column.radio("És l'auscultació sibilant?",['Si','No'])
-crackles = left_column.radio("És l'auscultació crepitant?",['Si','No'])
+wheezing = left_column.radio("És l'auscultació sibilant?",['No Consta','Si','No'])
+crackles = left_column.radio("És l'auscultació crepitant?",['No Consta','Si','No'])
 
-odyno = right_column.radio("Té odinofàgia?",['Si','No','No Consta'])
-odyno_first = right_column.radio("Va presentar odinofàgia durant les primeres 24h?",['Si','No'])
+odyno = right_column.radio("Té odinofàgia?",['No Consta','Si','No'])
+odyno_first = right_column.radio("Va presentar odinofàgia durant les primeres 24h?",['No Consta','Si','No'])
 
-nasal = left_column.radio("Té congestió nasal?",['Si','No','No Consta'])
-nasal_first = left_column.radio("Va presentar congestió nasal durant les primeres 24h?",['Si','No'])
+nasal = left_column.radio("Té congestió nasal?",['No Consta','Si','No'])
+nasal_first = left_column.radio("Va presentar congestió nasal durant les primeres 24h?",['No Consta','Si','No'])
 
-fatiga = left_column.radio("Té fatiga?",['Si','No','No Consta'])
-fatiga_first = right_column.radio("Va presentar fatiga durant les primeres 24h?",['Si','No'])
+fatiga = left_column.radio("Té fatiga?",['No Consta','Si','No'])
+fatiga_first = right_column.radio("Va presentar fatiga durant les primeres 24h?",['No Consta','Si','No'])
 
-headache = right_column.radio("Té mal de cap?",['Si','No','No Consta'])
-headache_first = right_column.radio("Va presentar mal de cap durant les primeres 24h?",['Si','No'])
+headache = right_column.radio("Té mal de cap?",['No Consta','Si','No'])
+headache_first = right_column.radio("Va presentar mal de cap durant les primeres 24h?",['No Consta','Si','No'])
 
-conj = left_column.radio("Té conjuntivitis?",['Si','No','No Consta'])
-conj_first = left_column.radio("Va presentar conjuntivitis durant les primeres 24h?",['Si','No'])
+conj = left_column.radio("Té conjuntivitis?",['No Consta','Si','No'])
+conj_first = left_column.radio("Va presentar conjuntivitis durant les primeres 24h?",['No Consta','Si','No'])
 
-ocular = right_column.radio("Té dolor ocular?",['Si','No','No Consta'])
-ocular_first = right_column.radio("Va presentar dolor ocular durant les primeres 24h?",['Si','No'])
+ocular = right_column.radio("Té dolor ocular?",['No Consta','Si','No'])
+ocular_first = right_column.radio("Va presentar dolor ocular durant les primeres 24h?",['No Consta','Si','No'])
 
-gi_symp = left_column.radio("Té símptomes gastrointestinals?",['Si','No'])
-gi_first = left_column.radio("Va presentar símptomes gastrointestinals durant les primeres 24h?",['Si','No'])
+gi_symp = left_column.radio("Té símptomes gastrointestinals?",['No Consta','Si','No'])
+gi_first = left_column.radio("Va presentar símptomes gastrointestinals durant les primeres 24h?",['No Consta','Si','No'])
 
-abd = right_column.radio("Té dolor abdominal?",['Si','No','No Consta'])
-vomit = right_column.radio("Té vòmits?",['Si','No','No Consta'])
-diarrea = right_column.radio("Té diarrea?",['Si','No','No Consta'])
+abd = right_column.radio("Té dolor abdominal?",['No Consta','Si','No'])
+vomit = right_column.radio("Té vòmits?",['No Consta','Si','No'])
+diarrea = right_column.radio("Té diarrea?",['No Consta','Si','No'])
 
-skin = left_column.radio("Té símptomes dermatològics?",['Si','No'])
-skin_first = left_column.radio("Va presentar símptomes dermatològics durant les primeres 24h?",['Si','No'])
-rash = left_column.radio("Té erupcions cutànies?",['Si','No'])
+skin = left_column.radio("Té símptomes dermatològics?",['No Consta','Si','No'])
+skin_first = left_column.radio("Va presentar símptomes dermatològics durant les primeres 24h?",['No Consta','Si','No'])
+rash = left_column.radio("Té erupcions cutànies?",['No Consta','Si','No'])
 
-infla_peri = right_column.radio("Té signes d'inflamació perifèrica?",['Si','No'])
-infla_oral = right_column.radio("Té signes d'inflamació oral?",['Si','No'])
+infla_peri = right_column.radio("Té signes d'inflamació perifèrica?",['No Consta','Si','No'])
+infla_oral = right_column.radio("Té signes d'inflamació oral?",['No Consta','Si','No'])
 
-adeno = right_column.radio("Té limfadenopaties > 1cm?",['Si','No','No Consta'])
-adeno_first = right_column.radio("Va presentar limfadenopaties > 1cm durant les primeres 24h?",['Si','No'])
+adeno = right_column.radio("Té limfadenopaties > 1cm?",['No Consta','Si','No'])
+adeno_first = right_column.radio("Va presentar limfadenopaties > 1cm durant les primeres 24h?",['No Consta','Si','No'])
 
-hepato = left_column.radio("Té hepatomegalia?",['Si','No','No Consta'])
-hepato_first = left_column.radio("Va presentar hepatomegalia durant les primeres 24h?",['Si','No'])
+hepato = left_column.radio("Té hepatomegalia?",['No Consta','Si','No'])
+hepato_first = left_column.radio("Va presentar hepatomegalia durant les primeres 24h?",['No Consta','Si','No'])
 
-spleno = left_column.radio("Té esplenomegalia?",['Si','No','No Consta'])
-spleno_first = left_column.radio("Va presentar esplenomegalia durant les primeres 24h?",['Si','No'])
+spleno = left_column.radio("Té esplenomegalia?",['No Consta','Si','No'])
+spleno_first = left_column.radio("Va presentar esplenomegalia durant les primeres 24h?",['No Consta','Si','No'])
 
-hemo = right_column.radio("Té hemorràgies?",['Si','No','No Consta'])
-hemo_first = right_column.radio("Va presentar hemorràgies durant les primeres 24h?",['Si','No'])
+hemo = right_column.radio("Té hemorràgies?",['No Consta','Si','No'])
+hemo_first = right_column.radio("Va presentar hemorràgies durant les primeres 24h?",['No Consta','Si','No'])
 
-irriti = left_column.radio("Està irritable?",['Si','No','No Consta'])
-irriti_first = left_column.radio("Va presentar irritabilitat durant les primeres 24h?",['Si','No'])
+irriti = left_column.radio("Està irritable?",['No Consta','Si','No'])
+irriti_first = left_column.radio("Va presentar irritabilitat durant les primeres 24h?",['No Consta','Si','No'])
 
-neuro = right_column.radio("Té símptomes neurològics?",['Si','No'])
-neuro_first = right_column.radio("Va presentar símptomes neurològics durant les primeres 24h?",['Si','No'])
-confu = right_column.radio("Presenta confusió?",['Si','No'])
-seizures = right_column.radio("Té convulsions?",['Si','No'])
+neuro = right_column.radio("Té símptomes neurològics?",['No Consta','Si','No'])
+neuro_first = right_column.radio("Va presentar símptomes neurològics durant les primeres 24h?",['No Consta','Si','No'])
+confu = right_column.radio("Presenta confusió?",['No Consta','Si','No'])
+seizures = right_column.radio("Té convulsions?",['No Consta','Si','No'])
 
-nuch = left_column.radio("Té rigidesa nucal?",['Si','No'])
-hypotonia = left_column.radio("Té hipotònia?",['Si','No'])
+nuch = left_column.radio("Té rigidesa nucal?",['No Consta','Si','No'])
+hypotonia = left_column.radio("Té hipotònia?",['No Consta','Si','No'])
 
-paral = right_column.radio("Presenta paràlisi perifèrica?",['Si','No'])
-shock = right_column.radio("Té símptomes de shock?",['Si','No'])
-shock_first = right_column.radio("Va presentar símptomes de shock durant les primeres 24h?",['Si','No'])
+paral = right_column.radio("Presenta paràlisi perifèrica?",['No Consta','Si','No'])
+shock = right_column.radio("Té símptomes de shock?",['No Consta','Si','No'])
+shock_first = right_column.radio("Va presentar símptomes de shock durant les primeres 24h?",['No Consta','Si','No'])
 
-taste = left_column.radio("Té alteració en el gust?",['Si','No'])
-taste_first = left_column.radio("Va presentar símptomes d'alteració en el gust durant les primeres 24h?",['Si','No'])
-smell = left_column.radio("Té alteració en l'olfacte?",['Si','No'])
-smell_first = left_column.radio("Va presentar símptomes d'alteració en l'olfacte durant les primeres 24h?",['Si','No'])
+taste = left_column.radio("Té alteració en el gust?",['No Consta','Si','No'])
+taste_first = left_column.radio("Va presentar símptomes d'alteració en el gust durant les primeres 24h?",['No Consta','Si','No'])
+smell = left_column.radio("Té alteració en l'olfacte?",['No Consta','Si','No'])
+smell_first = left_column.radio("Va presentar símptomes d'alteració en l'olfacte durant les primeres 24h?",['No Consta','Si','No'])
 
 
-# In[28]:
+# In[8]:
 
 
 # Comorbiditats
@@ -166,20 +166,20 @@ if st.checkbox('Presenta comorbiditat'):
     asma = right_column.radio("Té asma?",['Si','No'])
 
 
-# In[29]:
+# In[9]:
 
 
 
 dades_pacient = [data,born,sport,sympt_epi,housemembers_symp,home_confirmed,school_sympt,school_confirmed,fever,highest_fever,ini_fever,end_fever,tos,cough_first,crup,crup_first,disfonia,disfonia_first,resp,resp_first,tachypnea,tachypnea_first,ausc,ausc_first,wheezing,crackles,odyno,odyno_first,nasal,nasal_first,fatiga,fatiga_first,headache,headache_first,conj,conj_first,ocular,ocular_first,gi_symp,gi_first,abd,vomit,diarrea,skin,skin_first,rash,infla_peri,infla_oral,adeno,adeno_first,hepato,hepato_first,spleno,spleno_first,hemo,hemo_first,irriti,irriti_first,neuro,neuro_first,confu,seizures,nuch,hypotonia,paral,shock,shock_first,taste,taste_first,smell,smell_first,comorb,cardio,hipert,com_resp,asma]
 
 
-# In[30]:
+# In[10]:
 
 
 print(dades_pacient)
 
 
-# In[31]:
+# In[11]:
 
 
 for ss in range(len(dades_pacient)):
@@ -187,15 +187,17 @@ for ss in range(len(dades_pacient)):
         dades_pacient[ss] = 1
     if dades_pacient[ss] == 'No':
         dades_pacient[ss] = 0
+    if dades_pacient[ss] == 'No Consta':
+        dades_pacient[ss] = 3
 
 
-# In[32]:
+# In[12]:
 
 
 print(dades_pacient)
 
 
-# In[33]:
+# In[13]:
 
 
 st.header("Resultat")
@@ -205,7 +207,7 @@ if not button:
     st.stop()
 
 
-# In[34]:
+# In[14]:
 
 
 st.markdown("""
@@ -220,7 +222,7 @@ st.markdown('<p class="big-font">'+ str(id_pacient)+' té un 90% de probabilitat
 st.write("Aquí va la gràfica maca dels bitsbitsbits!")
 
 
-# In[37]:
+# In[15]:
 
 
 # dictionary of lists 
