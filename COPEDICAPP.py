@@ -25,8 +25,8 @@ st.title('Projecte La Marató - COPEDICAT') # TITOL API
 # In[99]:
 
 
-dades = pd.read_csv('COPEDICATClinicSympt_DATA_2021-03-15_1112.csv') # LLEGIM LES DADES DE L'EXCEL
-vec_part = dades.participant_id # ID PARTICIPANT
+#dades = pd.read_csv('COPEDICATClinicSympt_DATA_2021-03-15_1112.csv') # LLEGIM LES DADES DE L'EXCEL
+#vec_part = dades.participant_id # ID PARTICIPANT
 
 
 # In[100]:
