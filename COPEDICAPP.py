@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[96]:
+# In[21]:
 
 
 import streamlit as st
@@ -10,19 +10,19 @@ import pandas as pd
 import datetime
 
 
-# In[97]:
+# In[22]:
 
 
 st.set_page_config('COPEDICAPP','https://pbs.twimg.com/profile_images/1309527192381067270/6zbTWN-M.jpg','wide')
 
 
-# In[98]:
+# In[23]:
 
 
 st.title('Projecte La Marató - COPEDICAT') # TITOL API
 
 
-# In[101]:
+# In[24]:
 
 
 # CALENDARIS DATES
@@ -30,13 +30,13 @@ data = st.sidebar.date_input("Data d'avui")
 born = st.sidebar.date_input("Data naixement pacient")
 
 
-# In[102]:
+# In[25]:
 
 
 id_pacient = st.text_input('ID del/la pacient', 'ID XXXXXX')
 
 
-# In[103]:
+# In[26]:
 
 
 # SOCIAL
@@ -50,7 +50,7 @@ school_sympt = right_column.radio("A l'escola hi ha algú amb símptomes?",['Si'
 school_confirmed = right_column.radio("COVID confirmat a l'escola?",['Si','No'])
 
 
-# In[104]:
+# In[27]:
 
 
 # SIMPTOMES
@@ -147,7 +147,7 @@ smell = left_column.radio("Té alteració en l'olfacte?",['Si','No'])
 smell_first = left_column.radio("Va presentar símptomes d'alteració en l'olfacte durant les primeres 24h?",['Si','No'])
 
 
-# In[105]:
+# In[28]:
 
 
 # Comorbiditats
@@ -166,20 +166,20 @@ if st.checkbox('Presenta comorbiditat'):
     asma = right_column.radio("Té asma?",['Si','No'])
 
 
-# In[106]:
+# In[29]:
 
 
 
 dades_pacient = [data,born,sport,sympt_epi,housemembers_symp,home_confirmed,school_sympt,school_confirmed,fever,highest_fever,ini_fever,end_fever,tos,cough_first,crup,crup_first,disfonia,disfonia_first,resp,resp_first,tachypnea,tachypnea_first,ausc,ausc_first,wheezing,crackles,odyno,odyno_first,nasal,nasal_first,fatiga,fatiga_first,headache,headache_first,conj,conj_first,ocular,ocular_first,gi_symp,gi_first,abd,vomit,diarrea,skin,skin_first,rash,infla_peri,infla_oral,adeno,adeno_first,hepato,hepato_first,spleno,spleno_first,hemo,hemo_first,irriti,irriti_first,neuro,neuro_first,confu,seizures,nuch,hypotonia,paral,shock,shock_first,taste,taste_first,smell,smell_first,comorb,cardio,hipert,com_resp,asma]
 
 
-# In[107]:
+# In[30]:
 
 
 print(dades_pacient)
 
 
-# In[108]:
+# In[31]:
 
 
 for ss in range(len(dades_pacient)):
@@ -189,13 +189,13 @@ for ss in range(len(dades_pacient)):
         dades_pacient[ss] = 0
 
 
-# In[109]:
+# In[32]:
 
 
 print(dades_pacient)
 
 
-# In[112]:
+# In[33]:
 
 
 st.header("Resultat")
@@ -205,7 +205,7 @@ if not button:
     st.stop()
 
 
-# In[111]:
+# In[34]:
 
 
 st.markdown("""
@@ -220,16 +220,25 @@ st.markdown('<p class="big-font">'+ str(id_pacient)+' té un 90% de probabilitat
 st.write("Aquí va la gràfica maca dels bitsbitsbits!")
 
 
-# In[ ]:
+# In[37]:
 
 
 # dictionary of lists 
-dict = {'id': id_pacient,'recruit_date':data,'date_of_birth':born,'sports':sport,'sympt_epi':sympt_epi,'housemember_symptoms':housemembers_symp,'home_confirmed':home_confirmed,'school_symptoms':school_sympt,'school_confirmed':school_confirmed,'fever':fever,'highest_fever':highest_fever,'date_fever':ini_fever,'end_fever':end_fever,'tos':tos,'cough_first':cough_first,'crup':crup,'crup_first':crup_first,'dysphonia':disfonia,'disfonia_first':disfonia_first,'resp':resp,'dyspnea_first':resp_first,'tachypnea':tachypnea,'tachypnea_first':tachypnea_first,'ausc_resp':ausc,'auscult_first':ausc_first,'wheezing':wheezing,'crackles':crackles,'odynophagia':odyno,'odynophagia_first':odyno_first,'nasal_congestion':nasal,'nasal_first':nasal_first,'fatiga':fatiga,'fatigue_first':fatiga_first,'headache':headache,'headache_first':headache_first,'conjuntivitis':conj,'conj_first':conj_first,'ocular_pain':ocular,'ocular_first':ocular_first,'gi_symptoms':gi_symp,'gi_first':gi_first,'abdominal_pain':abd,'vomiting':vomit,'dyarrea':diarrea,'dermatologic':skin,'skin_first':skin_first,'rash':rash,'inflam_periferic':infla_peri,'inflam_oral':infla_oral,'adenopathies':adeno,'lymph_first':adeno_first,'hepato':hepato,'hepato_first':hepato_first,'splenomegaly':spleno,'spleno_first':spleno_first,'hemorrhagies':hemo,'hemorr_first':hemo_first,'irritability':irriti,'irritability_first':irriti_first,'neuro':neuro,'neuro_first':neuro_first,'confusion':confu,'seizures':seizures,'nuchal_stiffness':nuch,'hypotonia':hypotonia,'peripheral_paralysis':paral,'shock':shock,'shock_first':shock_first,'taste_smell':taste,'taste_first':taste_first,'smell':smell,'smell_first':smell_first,'comorbi_binary':comorb,'cardiopathy':cardio,'hypertension':hipert,'pulmonar_disease':com_resp,'asma':asma} 
+dict = {'id': [id_pacient],'recruit_date':[dades_pacient[0]],'date_of_birth':[dades_pacient[1]],'sports':[dades_pacient[2]],'sympt_epi':[dades_pacient[3]],'housemember_symptoms':[dades_pacient[4]],'home_confirmed':[dades_pacient[5]],'school_symptoms':[dades_pacient[6]],'school_confirmed':[dades_pacient[7]],'fever':[dades_pacient[8]],'highest_fever':[dades_pacient[9]],'date_fever':[dades_pacient[10]],'end_fever':[dades_pacient[11]],'tos':[dades_pacient[12]],'cough_first':[dades_pacient[13]],'crup':[dades_pacient[14]],'crup_first':[dades_pacient[15]],'dysphonia':[dades_pacient[16]],'disfonia_first':[dades_pacient[17]],'resp':[dades_pacient[18]],'dyspnea_first':[dades_pacient[19]],'tachypnea':[dades_pacient[20]],'tachypnea_first':[dades_pacient[21]],'ausc_resp':[dades_pacient[22]],'auscult_first':[dades_pacient[23]],'wheezing':[dades_pacient[24]],'crackles':[dades_pacient[25]],'odynophagia':[dades_pacient[26]],'odynophagia_first':[dades_pacient[27]],'nasal_congestion':[dades_pacient[28]],'nasal_first':[dades_pacient[29]],'fatiga':[dades_pacient[30]],'fatigue_first':[dades_pacient[31]],'headache':[dades_pacient[32]],'headache_first':[dades_pacient[33]],'conjuntivitis':[dades_pacient[34]],'conj_first':[dades_pacient[35]],'ocular_pain':[dades_pacient[36]],'ocular_first':[dades_pacient[37]],'gi_symptoms':[dades_pacient[38]],'gi_first':[dades_pacient[39]],'abdominal_pain':[dades_pacient[40]],'vomiting':[dades_pacient[41]],'dyarrea':[dades_pacient[42]],'dermatologic':[dades_pacient[43]],'skin_first':[dades_pacient[44]],'rash':[dades_pacient[45]],'inflam_periferic':[dades_pacient[46]],'inflam_oral':[dades_pacient[47]],'adenopathies':[dades_pacient[48]],'lymph_first':[dades_pacient[49]],'hepato':[dades_pacient[50]],'hepato_first':[dades_pacient[51]],'splenomegaly':[dades_pacient[52]],'spleno_first':[dades_pacient[53]],'hemorrhagies':[dades_pacient[54]],'hemorr_first':[dades_pacient[55]],'irritability':[dades_pacient[56]],'irritability_first':[dades_pacient[57]],'neuro':[dades_pacient[58]],'neuro_first':[dades_pacient[59]],'confusion':[dades_pacient[60]],'seizures':[dades_pacient[61]],'nuchal_stiffness':[dades_pacient[62]],'hypotonia':[dades_pacient[63]],'peripheral_paralysis':[dades_pacient[64]],'shock':[dades_pacient[65]],'shock_first':[dades_pacient[66]],'taste_smell':[dades_pacient[67]],'taste_first':[dades_pacient[68]],'smell':[dades_pacient[69]],'smell_first':[dades_pacient[70]],'comorbi_binary':[dades_pacient[71]],'cardiopathy':[dades_pacient[72]],'hypertension':[dades_pacient[73]],'pulmonar_disease':[dades_pacient[74]],'asma':[dades_pacient[75]]} 
      
 df = pd.DataFrame(dict)
-  
+import base64 
 # saving the dataframe
-df.to_csv('new_data.csv')
+def get_table_download_link(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}" download="new_data.csv">Descarrega fitxer csv</a>'
+    return href
+st.markdown(get_table_download_link(df), unsafe_allow_html=True)
 
 
 # In[ ]:
